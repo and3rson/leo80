@@ -18,5 +18,5 @@ Z80-based single-board computer
 # Resources
 
 - anycpu.org forum [thread](https://anycpu.org/forum/viewtopic.php?f=25&t=1060)
-- Original [datasheet](https://www.zilog.com/docs/z80/um0080.pdf) (very slow download), or alternatively - [archived version](http://dun.ai/files/z80.pdf) on my website or on [https://archive.org/details/um0080httpswww.zilog.comdocsz80um0080.pdf](archive.org).
+- Original [datasheet](https://www.zilog.com/docs/z80/um0080.pdf) (very slow download), or alternatively - [archived version](http://dun.ai/files/z80.pdf) on my website or on [archive.org](https://archive.org/details/um0080httpswww.zilog.comdocsz80um0080.pdf).
 
