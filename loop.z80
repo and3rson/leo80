@@ -1,0 +1,5 @@
+main:
+    ld hl, 0
+again:
+    nop
+    jp again

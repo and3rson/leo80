@@ -1,0 +1,4 @@
+main:
+    ld a, $AD
+    ld ($ABCD), a
+    halt

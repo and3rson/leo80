@@ -1,0 +1,3 @@
+main:
+    ld hl, 0
+    halt

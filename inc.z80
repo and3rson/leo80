@@ -1,0 +1,16 @@
+    org 0
+
+main:
+    ld hl, $ABCD
+    ; ld hl, var
+    xor a, a
+    ld (hl), a
+again:
+    ld a, (hl)
+    ; ld a, 'x'
+    ; out (0), a
+    inc a
+    ld (hl), a
+    jp again
+
+var: db 0
