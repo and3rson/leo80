@@ -1,0 +1,14 @@
+MEM = 0x1234
+
+    org 0x0
+
+main:
+    ld hl, MEM
+    xor a, a
+    ld (MEM), a
+
+repeat:
+    ld a, (MEM)
+    inc a
+    ld (MEM), a
+    jp repeat

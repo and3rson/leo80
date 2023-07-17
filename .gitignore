@@ -1,1 +1,7 @@
 *.bin
+# Wine stuff
+.windows-serial
+# Diptrace lockfiles
+~*~
+# CCLS
+.ccls-cache
