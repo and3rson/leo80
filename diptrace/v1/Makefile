@@ -7,8 +7,8 @@ v1.zip: $(SOURCES)
 Top.gbr: 1\ -\ Top.gbr
 	cp "1 - Top.gbr" Top.gbr
 
-Bot.gbr: 2\ -\ Bottom.gbr
-	cp "2 - Bottom.gbr" Bot.gbr
+Bot.gbr: 2\ -\ Bot.gbr
+	cp "2 - Bot.gbr" Bot.gbr
 
 BotMask.gbr: BottomMask.gbr
 	cp BottomMask.gbr BotMask.gbr
@@ -21,7 +21,7 @@ Board.gbr: BoardOutline.gbr
 
 .PHONY: clean
 clean:
-	rm *.gbr *.drl v1.zip
+	rm -f *.gbr *.drl v1.zip
 
 .PHONY: view
 view:
