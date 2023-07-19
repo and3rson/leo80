@@ -1,0 +1,24 @@
+[[ics]]
+name = "Addr-AFT16V8B"
+pins = 20
+vcc = 3.3
+vectors = [
+    "CXXXXXXXXG0XXXXXXXXV",
+
+    # /MREQ, /IORQ, /M1 all high
+    "C10011XXXG0HHHHHXXXV",
+
+    # /ROM
+    "C00011XXXG0LHHHHXXXV",
+    # /RAM
+    "C00111XXXG0HLHHHXXXV",
+
+    # /IN
+    "C10001XXXG0HHLLHXXXV",
+    # /IN, but M1 is low
+    "C10000XXXG0HHHHHXXXV",
+    # /OUT
+    "C11001XXXG0HHLHLXXXV",
+    # /OUT, but M1 is low
+    "C11000XXXG0HHHHHXXXV",
+]
