@@ -19,7 +19,7 @@ Z80-based single-board computer
 
 # PCB
 
-![PCB](./img/v1a_pcb.jpg)
+![PCB](./img/v1a_pcb.png)
 
 # Resources
 
