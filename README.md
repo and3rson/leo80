@@ -1,7 +1,7 @@
 # leo80
 Z80-based single-board computer
 
-![Schematic](./img/v1a_3d.jpg)
+![Schematic](./img/v1b_3d.jpg)
 
 # Design considerations
 
@@ -15,11 +15,11 @@ Z80-based single-board computer
 
 # Schematic
 
-![Schematic](./img/v1a.jpg)
+![Schematic](./img/v1b.jpg)
 
 # PCB
 
-![PCB](./img/v1a_pcb.png)
+![PCB](./img/v1b_pcb.png)
 
 # Resources
 
