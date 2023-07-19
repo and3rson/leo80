@@ -1,19 +1,25 @@
 # leo80
 Z80-based single-board computer
 
+![Schematic](./img/v1a_3d.jpg)
+
 # Design considerations
 
-- $0000-$7FFF - ROM
-- $8000-$FFFF - RAM
-- 8 LEDs for visual output
+- $0000-$7FFF - ROM.
+- $8000-$FFFF - RAM.
+- Address decoding with ATF16V8.
 - Using perfboard for this, so trying to keep it small & simple - will be adding more fancy things later (LCD, UART, etc).
-- Simple 8-bit output through '273 flip-flop.
-- No input or interrupts for now.
+- Simple 8-bit input through '244 tri-state buffer.
+- Simple 8-bit output through '273 flip-flop with 8 LEDs for visual output.
 - I used AS6C4008 in schematic since it's included in Kicad parts by default. I have various SRAM chips available. Same with W27C512 EPROM.
 
 # Schematic
 
-![Schematic](./img/v1.jpg)
+![Schematic](./img/v1a.jpg)
+
+# PCB
+
+![PCB](./img/v1a_pcb.jpg)
 
 # Resources
 
