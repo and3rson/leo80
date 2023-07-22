@@ -1,0 +1,17 @@
+; main
+main:
+    in a, (0x00)
+    out (0x01), a
+    jp main
+
+; irq
+    block 0x38-$
+    org 0x38
+irq:
+    reti
+
+; nmi
+    block 0x66-$
+    org 0x66
+nmi:
+    reti

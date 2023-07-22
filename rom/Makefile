@@ -5,7 +5,8 @@ all: $(TARGETS)
 
 %.bin: %.z80
 	sjasmplus $< --syntax=abfw --raw=$@
+	truncate -s 4096 $@
 
 .PHONY: run
 run: inc.bin
-	z80e-sdl inc.bin --no-rom-check --debug --print-state
+	z80e-sdl main.bin --no-rom-check --debug --print-state
