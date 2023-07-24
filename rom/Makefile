@@ -1,15 +1,29 @@
-TARGETS = $(patsubst %.z80,%.bin,$(wildcard *.z80))
+TARGETS = $(patsubst src/%.z80,bin/%.bin,$(wildcard src/*.z80))
+MAIN = bin/main.bin
 
 .PHONY: all
-all: $(TARGETS)
+all: bin $(TARGETS)
 
-%.bin: %.z80
+bin:
+	mkdir -p bin
+
+bin/%.bin: src/%.z80
 	sjasmplus $< --syntax=abfw --raw=$@
 	truncate -s 4096 $@
 
-.PHONY: run
-run: inc.bin
-	z80e-sdl main.bin --no-rom-check --debug --print-state
+.PHONY: clean
+clean:
+	rm -f bin/*.bin
 
+.PHONY: run
+run: $(MAIN)
+	z80e-sdl $(MAIN) --no-rom-check --debug --print-state
+
+.PHONY: program
 program:
-	minipro -p W27C512@DIP28 -w main.bin -S
+	minipro -p W27C512@DIP28 -w $(MAIN) -S
+
+.PHONY: disasm
+disasm: $(MAIN)
+	z80dasm $(MAIN) -g 0 -l -a
+
