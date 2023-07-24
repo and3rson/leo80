@@ -1,8 +1,8 @@
     org 0
 
 main:
-    ld hl, $ABCD
-    ; ld hl, var
+    ; ld hl, $ABCD
+    ld hl, var
     xor a, a
     ld (hl), a
 again:
