@@ -1,6 +1,8 @@
 # leo80
 Z80-based single-board computer
 
+![Assembled device](./img/v1_ready.jpg)
+
 ![Schematic](./img/v1b_3d.jpg)
 
 # Design considerations
