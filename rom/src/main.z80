@@ -16,6 +16,6 @@ nmi:
 
 ; main
 main:
-    in a, (0x00)
-    out (0x01), a
+    in a, (0x00)        ; Read from DIP switches
+    out (0x01), a       ; Write to LEDs
     jp main
