@@ -9,7 +9,7 @@ bin:
 
 bin/%.bin: src/%.z80
 	sjasmplus $< --syntax=abfw --raw=$@
-	truncate -s 4096 $@
+	# truncate -s 4096 $@
 
 .PHONY: clean
 clean:
@@ -20,7 +20,7 @@ run: $(MAIN)
 	z80e-sdl $(MAIN) --no-rom-check --debug --print-state
 
 .PHONY: program
-program:
+program: $(MAIN)
 	minipro -p W27C512@DIP28 -w $(MAIN) -S
 
 .PHONY: disasm

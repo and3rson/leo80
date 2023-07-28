@@ -1,5 +1,7 @@
     org 0
 
+MEM = 0x8000
+
 ; reset
 reset:
     jp main
@@ -8,14 +10,141 @@ reset:
     block 0x38-$
 irq:
     reti
+    ; di
+    ; push af
+    ; push de
+    ; ld de, MEM
+    ; ld a, (de)
+    ; inc a
+    ; ld (MEM), a
+    ; pop de
+    ; pop af
+    ; ei
+    ; reti
 
 ; nmi
     block 0x66-$
 nmi:
+    ei
     reti
 
 ; main
 main:
-    in a, (0x00)        ; Read from DIP switches
-    out (0x01), a       ; Write to LEDs
-    jp main
+    ld sp, 0xFFFF       ; Stack grows down from 0xFFFF
+    im 1                ; Interrupt mode 1 (0x38)
+    ; ei                  ; Enable interrupts
+
+    ; ld a, 0
+    ; ld (0x9001), a
+    ; ld a, (0x9001)
+    ; ld a, 1
+    ; ld (0x9001), a
+    ; ld a, (0x9001)
+    ; ld a, 0
+    ; ld (0x9001), a
+    ; ld a, (0x9001)
+    ; ld a, 1
+    ; ld (0x9001), a
+    ; ld a, (0x9001)
+    ; ld a, 0
+    ; ld (0x9001), a
+    ; ld a, (0x9001)
+    ; ld a, 1
+    ; ld (0x9001), a
+    ; ld a, (0x9001)
+    ; ld a, 0
+    ; ld (0x9001), a
+    ; ld a, (0x9001)
+    ; ld a, 1
+    ; ld (0x9001), a
+    ; ld a, (0x9001)
+    ;
+    ; halt
+    ;
+    ld a, 1
+    ld (0x8000), a
+    ld a, 2
+    ld (0x8001), a
+    ld a, 4
+    ld (0x8002), a
+    ld a, 8
+    ld (0x8003), a
+    ld a, 16
+    ld (0x8004), a
+    ld a, 32
+    ld (0x8005), a
+    ld a, 64
+    ld (0x8006), a
+    ld a, 128
+    ld (0x8007), a
+
+; prog1:
+;     ; ld a, (0x8000)
+;     ; ld (0x8000), a
+;     ; jp loop
+;     in a, (0x00)
+;     xor a, 0xFF
+;     ld l, a
+;     ld h, 0x80
+;     ld a, (hl)
+;     out (0x01), a
+;
+;     ld hl, 0xFFFF
+;     ld a, 0
+;     call softim
+;     ; jp softim
+;
+;     jp prog1
+
+    ; NMOS/CMOS check
+    ; ld c, 1
+    ; .db 0xED, 0x71  ; out (c), 0 if NMOS; out (c), 0xFF if CMOS
+    ; halt
+
+    ld a, 1
+    push af
+loop:
+    pop af
+    rlca
+    out (0x01), a
+    push af
+
+    ld hl, 0x1FFF
+    ld a, 0
+    call softim
+
+    jp loop
+
+
+softim:
+    inc a ;at least one pass
+    ld b, a ;through outer loop
+    ld a, 0 ;dummy instructions
+    jp softm2 ;to kill time
+softm1:
+    jr softm2 ;delay 16 T states
+softm2:
+    nop
+softm3:
+    dec hl ;decrement low order
+    ld a,l
+    or h ;hl = 0?
+    jp nz, softm1 ;no, look again
+    dec b ;b = zero?
+    jr nz, softm3 ;no, repeat outer loop
+    ret ;yes, return
+    ; jp loop
+
+;     ld a, 0xAA
+;     ld de, MEM
+;     ld (de), a
+;
+; loop:
+;     ld de, MEM
+;     ld a, (de)
+;     ; inc a
+;     out (0x01), a
+;     jp loop
+;     ; in a, (0x00)        ; Read from DIP switches
+;     ; out (0x01), a       ; Write to LEDs
+;     ; jp main

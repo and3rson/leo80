@@ -1,8 +1,10 @@
     org 0
 
+VAR = $1000
+
 main:
     ; ld hl, $ABCD
-    ld hl, var
+    ld hl, VAR
     xor a, a
     ld (hl), a
 again:
@@ -13,4 +15,4 @@ again:
     ld (hl), a
     jp again
 
-var: db 0
+; var: db 0

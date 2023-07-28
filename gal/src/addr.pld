@@ -1,21 +1,26 @@
 GAL16V8
 Addr
 
-CLK  /MREQ  A0    A15  /IORQ /M1    NC    NC    NC    GND
-/OE  /ROM  /RAM  /IO   /IN   /OUT   NC    NC    NC    VCC
+CLK  /MREQ  A0    A15  /IORQ /M1    A1    NC    NC    GND
+/OE  /ROM  /RAM  /IO   /IN   /OUT  /RFSH /LCDEN NC    VCC
 
 ; ROM = $0000..$7FFF
-ROM  = /A15  *  MREQ
-; RAM = $8000..$FFFF
-RAM  =  A15  *  MREQ
+ROM   = /A15  *  MREQ *  /RFSH
+; RAM = $8000..$FFFF, avoid refresh cycles
+RAM   =  A15  *  MREQ *  /RFSH
 
 ; Qualify I/O with /M1 to avoid accidental I/O writes during interrupts
-IO   =  IORQ * /M1
+IO    =  IORQ * /M1   *  /RFSH
 
 ; Port 0 - input
-IN   = /A0   *  IO
+IN    = /A0   *  IO
+; IN    = /A0   * /A1  *  IO
 ; Port 1 - output
-OUT  =  A0   *  IO
+OUT   =  A0   *  IO
+; OUT   =  A0   * /A1  *  IO
+; Ports 2-3 - LCD commands & data
+; LCDEN =  A1   *  IO
+
 
 DESCRIPTION
 Address decoder for Leo80

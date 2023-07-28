@@ -4,4 +4,5 @@
   (lib (name "small_logic")(type "KiCad")(uri "${KIPRJMOD}/symbols/small_logic.kicad_sym")(options "")(descr ""))
   (lib (name "74hc00_small")(type "KiCad")(uri "${KIPRJMOD}/symbols/74hc00_small.kicad_sym")(options "")(descr ""))
   (lib (name "65xx")(type "KiCad")(uri "${KIPRJMOD}/symbols/65xx.kicad_sym")(options "")(descr ""))
+  (lib (name "my")(type "KiCad")(uri "${KIPRJMOD}/symbols/my.kicad_sym")(options "")(descr ""))
 )
