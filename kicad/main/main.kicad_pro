@@ -413,7 +413,7 @@
   "net_settings": {
     "classes": [
       {
-        "bus_width": 40,
+        "bus_width": 20,
         "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
